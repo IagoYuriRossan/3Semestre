@@ -116,8 +116,7 @@ const clients = [
   
     // retorna status http 404 - "Não encontrado", pois cliente não foi localizado
     res.status(404).send();
-    
   });
 
-  const productFilters = req.query as unknown as IProductListFilters;
+  
   export default router;
