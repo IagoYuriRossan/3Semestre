@@ -7,7 +7,7 @@ const { DataType } = require('sequelize-typescript');
 module.exports = {
   async up (queryInterface, Sequelize) {
    await queryInterface.createTable('marca',{
-    id_marca:{
+    id:{
       primaryKey: true,
       allowNull: false,
       autoIncrement: true,

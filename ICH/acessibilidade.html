@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lanchonete do Magrão</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <h1><a href="#home" title="Voltar para o início da página"><span class="texto-para-ler">Lanchonete do Magrão</span></a></h1>
+        </div>
+        <nav aria-label="Navegação principal">
+            <ul>
+                <li><a href="#sobre" title="Saiba mais sobre nossa lanchonete">Sobre</a></li>
+                <li><a href="#menu" title="Veja nosso cardápio">Menu</a></li>
+                <li><a href="#contato" title="Entre em contato conosco">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="banner" role="banner">
+        <div class="banner-content">
+            <h2><span class="texto-para-ler">Lanchonete do Magrão</span></h2>
+            <p><span class="texto-para-ler">Com ingredientes fresquinhos e receitas exclusivas.</span></p>
+            <a href="#menu" class="cta" role="button" aria-label="Veja o nosso Menu"><span class="texto-para-ler">Veja o nosso Menu</span></a>
+        </div>
+    </section>
+
+    <!-- Seção de Propaganda com vídeo -->
+    <section id="propaganda">
+        <div class="container">
+            <h2><span class="texto-para-ler">Veja o vídeo promocional da nossa lanchonete</span></h2>
+            <div class="video-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/IS1XHAJVURI"
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <section id="sobre">
+        <div class="container">
+            <h2><span class="texto-para-ler">Sobre nós</span></h2>
+            <p><span class="texto-para-ler">Na Lanchonete do Magrão trabalhamos com todos os ingredientes frescos e lanches e fritas preparadas com amor e carinho</span></p>
+        </div>
+    </section>
+
+    <section id="menu">
+        <div class="container">
+            <h2><span class="texto-para-ler">Nosso Menu</span></h2>
+            <div class="menu-items">
+                <article class="item" aria-labelledby="hamburguer">
+                    <img src="https://img.freepik.com/fotos-gratis/vista-de-uma-refeicao-deliciosa-pronta-para-comer_23-2151431747.jpg?ga=GA1.1.1021931841.1742643845&semt=ais_hybrid" alt="Imagem de um hambúrguer com queijo, bacon." />
+                    <h3 id="hamburguer"><span class="texto-para-ler">Hamburgão Magnifico</span></h3>
+                    <p><span class="texto-para-ler">R$ 35,00</span></p>
+                    <button onclick="adicionarAoPedido('Hamburgão Magnifico', 35)">Adicionar ao pedido</button>
+                </article>
+                <article class="item" aria-labelledby="batata">
+                    <img src="https://img.freepik.com/fotos-gratis/batatas-fritas-crocantes-com-ketchup-e-maionese_1150-26588.jpg?ga=GA1.1.1021931841.1742643845&semt=ais_hybrid" alt="Imagem de batatas fritas" />
+                    <h3 id="batata"><span class="texto-para-ler">Batata Frita Douradinha</span></h3>
+                    <p><span class="texto-para-ler">R$ 15,00</span></p>
+                    <button onclick="adicionarAoPedido('Batata Frita Douradinha', 15)">Adicionar ao pedido</button>
+                </article>
+                <article class="item" aria-labelledby="refrigerante">
+                    <img src="https://img.freepik.com/fotos-gratis/linda-bebida-gelada-de-cola-com-cubos-de-gelo_1150-26265.jpg?ga=GA1.1.1021931841.1742643845&semt=ais_hybrid" alt="Imagem de copo com coca-cola gelada, com gelo e limão" />
+                    <h3 id="refrigerante"><span class="texto-para-ler">Coca-Cola Geladinha</span></h3>
+                    <p><span class="texto-para-ler">R$ 8,00</span></p>
+                    <button onclick="adicionarAoPedido('Coca-Cola Geladinha', 8)">Adicionar ao pedido</button>
+                </article>
+            </div>
+
+            <h3>Seu Pedido:</h3>
+            <div id="pedido">
+                <p id="pedido-texto">Nenhum item adicionado ainda.</p>
+                <p id="total">Total: R$ 0,00</p>
+                <form id="form-pedido" onsubmit="return enviarPedido(event)">
+                    <label for="nome">Seu nome:</label>
+                    <input type="text" id="nome" name="nome" required>
+                    <label for="telefone">Seu telefone:</label>
+                    <input type="tel" id="telefone" name="telefone" required>
+                    <label for="endereco">Seu endereço:</label>
+                    <input type="text" id="endereco" name="endereco" required>
+                    <input type="submit" value="Finalizar Pedido">
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="contato">
+        <div class="container">
+            <h2><span class="texto-para-ler">Entre em contato</span></h2>
+            <p><span class="texto-para-ler">Rua Genesio Maria, 216 - Eden, Sorocaba - SP</span></p>
+            <p>Email: <a href="mailto:lanchonetedomagrao321@gmail.com.br" aria-label="Enviar email para Lanchonete do Magrao"><span class="texto-para-ler">lanchonetedomagrao321@gmail.com.br</span></a></p>
+            <p>Telefone: <a href="tel:+5515992849046" aria-label="Ligar para a Lanchonete do Magrao"><span class="texto-para-ler">(15) 99284-9046</span></a></p>
+        </div>
+    </section>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+
+        // Função para ler o texto
+        function lerTexto(texto) {
+            var msg = new SpeechSynthesisUtterance(texto);
+            msg.lang = 'pt-BR'; // Definindo o idioma para português do Brasil
+            window.speechSynthesis.speak(msg);
+        }
+
+        // Adicionando o evento de mouseover para o texto específico
+        document.querySelectorAll('.texto-para-ler').forEach(function (elemento) {
+            elemento.addEventListener('mouseover', function () {
+                lerTexto(elemento.innerText);
+            });
+        });
+
+        // Função para adicionar itens ao pedido
+        var pedido = [];
+        var total = 0;
+
+        function adicionarAoPedido(item, preco) {
+            pedido.push(item);
+            total += preco;
+            document.getElementById('pedido-texto').innerText = 'Itens no pedido: ' + pedido.join(', ');
+            document.getElementById('total').innerText = 'Total: R$ ' + total.toFixed(2);
+        }
+
+        // Função para enviar o pedido
+        function enviarPedido(event) {
+            event.preventDefault();
+            alert('Pedido feito com sucesso! Seu pedido será processado e logo entraremos em contato.');
+            document.getElementById('form-pedido').reset();
+            pedido = [];
+            total = 0;
+            document.getElementById('pedido-texto').innerText = 'Nenhum item adicionado ainda.';
+            document.getElementById('total').innerText = 'Total: R$ 0,00';
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2025 Lanchonete do Magrão. Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+
+</html>

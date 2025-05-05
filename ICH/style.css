@@ -1,0 +1,485 @@
+/* Resetando os estilos padrões */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+    line-height: 1.6;
+    font-size: 1rem; /* 1rem = 16px, mais flexível para a escala da fonte */
+    margin: 0;
+}
+
+/* Estilos para o cabeçalho */
+header {
+    background-color: #007B7F; /* Azul médio, com bom contraste */
+    color: white;
+    padding: 2rem 5vw; /* Usando largura da tela para o padding horizontal */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .logo h1 {
+    font-size: 2.5rem; /* Ajuste com rem para ser responsivo */
+    letter-spacing: 0.1rem;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav ul li {
+    margin: 0 2rem;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.125rem; /* Tamanho do texto ajustável */
+    transition: color 0.3s ease;
+}
+
+
+nav ul li a:hover, #banner .cta:hover {
+    color: #FFD700; /* Amarelo forte para o hover */
+}
+
+/* Estilos para a seção "Sobre" (Supondo que a seção "Sobre" seja uma seção com id="sobre") */
+#sobre {
+    padding: 6vh 5vw;
+    text-align: center;
+    margin-top: 2vh; /* Adiciona espaçamento superior */
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 3rem; /* Usando rem para escalabilidade */
+    margin-bottom: 2rem;
+    color: #007B7F; /* Azul médio para boa legibilidade */
+}
+
+p {
+    font-size: 1.125rem; /* Usando rem para adaptabilidade */
+    margin-bottom: 2rem;
+    color: #555;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+/* Estilos para a seção do banner */
+#banner {
+    background: url('banner.jpg') no-repeat center center/cover;
+    color: white;
+    height: 50vh; /* Usando a altura da viewport para a seção do banner */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-size: cover;
+    filter: brightness(0.7); /* Sombramento para destacar o texto */
+}
+
+#banner .banner-content h2 {
+    font-size: 4rem; /* Usando rem para escalabilidade */
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+
+#banner .banner-content p {
+    font-size: 1.25rem; /* Usando rem para tamanho de texto adaptável */
+    margin-bottom: 2rem;
+    max-width: 80%; /* Controlando a largura com percentual */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#banner .cta {
+    text-decoration: none;
+    background-color: #FFD700; /* Amarelo forte, bom contraste */
+    padding: 1.5rem 4vw; /* Usando vw para ajuste de padding horizontal */
+    color: #333;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    font-size: 1.5rem; /* Ajustável para diferentes tamanhos de tela */
+    transition: background-color 0.3s ease;
+}
+
+#banner .cta:hover {
+    background-color: #FFC107; /* Amarelo mais suave */
+}
+
+/* Estilos para as seções */
+section {
+    padding: 6vh 5vw; /* Usando unidades de viewport para ajustar a margem */
+    text-align: center;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 3rem; /* Usando rem para escalabilidade */
+    margin-bottom: 2rem;
+    color: #007B7F; /* Azul médio para boa legibilidade */
+}
+
+p {
+    font-size: 1.125rem; /* Usando rem para adaptabilidade */
+    margin-bottom: 2rem;
+    color: #555;
+    max-width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+
+/* Estilos para o menu */
+#menu .menu-items {
+    display: flex;
+    justify-content: space-between; /* Isso vai alinhar os itens lado a lado com espaçamento */
+    flex-wrap: wrap; /* Para permitir que os itens se movam para a linha seguinte se necessário */
+    gap: 1rem; /* Ajuste o espaçamento entre os itens */
+    margin-top: 4vh; /* Manter o espaçamento superior */
+}
+
+#menu .menu-items .item button:hover {
+    background-color: #005F5F;
+}
+
+#menu .menu-items .item button {
+    background-color: #007B7F;
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+#menu .menu-items .item {
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    width: 25vw;
+    text-align: center;
+    padding: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 0.2rem solid #007B7F;
+}
+
+#menu .menu-items .item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0.8rem 1.6rem rgba(0, 0, 0, 0.2);
+}
+
+#menu .menu-items .item img {
+    max-width: 100%;
+    border-radius: 1rem;
+}
+
+#menu .menu-items .item h3 {
+    font-size: 2rem; 
+    color: #007B7F; 
+    margin-top: 1rem;
+}
+
+#menu .menu-items .item p {
+    font-size: 1.25rem; 
+    color: #007B7F; 
+    font-weight: bold;
+}
+
+/* Estilos para o rodapé */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+
+footer p {
+    font-size: 1rem; 
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    #menu .menu-items {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    nav ul li {
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header .logo h1 {
+        font-size: 2rem; 
+    }
+
+    #banner .banner-content h2 {
+        font-size: 3rem; 
+    }
+
+    #banner .cta {
+        margin-top: 8vh; 
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+}
+
+/* Estilos para o vídeo */
+#propaganda {
+    padding: 6vh 5vw;
+    background-color: #f7f7f7;
+    text-align: center;
+    margin-bottom: 3vh; /* Aumentando ainda mais o espaçamento inferior */
+    margin-top: 15vh; /* Aumentando ainda mais o espaçamento inferior */
+}
+
+#propaganda h2 {
+    font-size: 2.5rem; /* Reduzindo o tamanho da fonte */
+    margin-bottom: 8vh; /* Aumentando o espaçamento abaixo do título */
+}
+
+.video-container iframe {
+    width: 100%;
+    max-width: 800px;
+    height: 450px;
+    border: none;
+}
+
+
+#total {
+    font-size: 1.5rem;
+    font-weight: bold;/* Resetando os estilos padrões */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    /* Fonte global e estilo de corpo */
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f7f7f7;
+        color: #333;
+        line-height: 1.6;
+        font-size: 1rem;
+        margin: 0;
+    }
+    
+    /* Cabeçalho */
+    header {
+        background-color: #2C3E50; /* Cor mais escura para o cabeçalho */
+        color: white;
+        padding: 1rem 5vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    
+    header .logo h1 {
+        font-size: 2.5rem;
+        letter-spacing: 0.1rem;
+    }
+    
+    nav ul {
+        list-style: none;
+        display: flex;
+    }
+    
+    nav ul li {
+        margin: 0 2rem;
+    }
+    
+    nav ul li a {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+        font-size: 1.125rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        transition: color 0.3s ease;
+    }
+    
+    nav ul li a:hover {
+        color: #FFD700;
+    }
+    
+    /* Estilos do banner */
+    #banner {
+        background: url('https://via.placeholder.com/1600x900') no-repeat center center/cover;
+        color: white;
+        height: 60vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background-size: cover;
+        filter: brightness(0.6);
+    }
+    
+    #banner .banner-content h2 {
+        font-size: 4rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    
+    #banner .cta {
+        text-decoration: none;
+        background-color: #FFD700;
+        padding: 1.5rem 3rem;
+        color: #333;
+        border-radius: 3rem;
+        font-weight: bold;
+        font-size: 1.5rem;
+        transition: background-color 0.3s ease;
+    }
+    
+    #banner .cta:hover {
+        background-color: #FFC107;
+    }
+    
+    /* Seção sobre */
+    #sobre {
+        padding: 4rem 5vw;
+        text-align: center;
+        background-color: #ffffff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    #sobre h2 {
+        font-size: 3rem;
+        color: #2C3E50;
+    }
+    
+    #sobre p {
+        font-size: 1.125rem;
+        color: #7f8c8d;
+        margin-top: 1rem;
+    }
+    
+    /* Menu */
+    #menu {
+        padding: 4rem 5vw;
+        text-align: center;
+    }
+    
+    #menu h2 {
+        font-size: 3rem;
+        margin-bottom: 3rem;
+    }
+    
+    .menu-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+    }
+    
+    .item {
+        background-color: #fff;
+        padding: 1.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .item:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .item img {
+        width: 100%;
+        border-radius: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .item h3 {
+        font-size: 1.5rem;
+        color: #2C3E50;
+    }
+    
+    .item p {
+        font-size: 1.25rem;
+        color: #e74c3c;
+        font-weight: bold;
+    }
+    
+    /* Contato */
+    #contato {
+        padding: 4rem 5vw;
+        background-color: #2C3E50;
+        color: white;
+        text-align: center;
+    }
+    
+    #contato a {
+        color: #FFD700;
+        text-decoration: none;
+    }
+    
+    #contato a:hover {
+        text-decoration: underline;
+    }
+    
+    footer {
+        background-color: #333;
+        color: white;
+        text-align: center;
+        padding: 2rem;
+    }
+    
+    margin-top: 1rem;
+}
+
+button {
+    background-color: #007B7F;
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 1.125rem;
+}
+
+button:hover {
+    background-color: #005F5F;
+}
+

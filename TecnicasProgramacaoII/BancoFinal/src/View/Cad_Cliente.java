@@ -65,6 +65,31 @@ public class Cad_Cliente extends javax.swing.JFrame {
             jButton1.setText("Pesquisar");
        }
        
+       operacao = "Consultar";
+       if(operacaoAtiva.equals(operacao)) {
+            jLabel1.setVisible(false);
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            jLabel5.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+            jLabel8.setVisible(false);
+            jLabel9.setVisible(false);
+            jLabel10.setVisible(false);
+            jLabel11.setVisible(true);
+            jTextField1.setVisible(false);
+            jTextField2.setVisible(false);
+            jTextField4.setVisible(false);
+            jTextField5.setVisible(false);
+            jTextField6.setVisible(false);
+            jTextField8.setVisible(false);
+            jTextField3.setVisible(false);
+            jTextField10.setVisible(true);
+            jComboBox1.setVisible(false);
+            jButton1.setText("PesquisaConsulta");
+       }
+       
     }
     
     Clientes clientes_tela = new Clientes();
@@ -293,7 +318,45 @@ public class Cad_Cliente extends javax.swing.JFrame {
             jComboBox1.setSelectedItem("AC");
         }
         
-         
+        operacao = "Consultar";
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            
+            ConnectDAO objcon = new ConnectDAO();
+            clientes_tela = objcon.pesquisaClienteJFBD("CLIENTES", "ID_CLI='" + jTextField10.getText() + "'");
+            jTextField1.setText(clientes_tela.getNome());
+            jTextField2.setText(clientes_tela.getEndereco());
+            jTextField3.setText(clientes_tela.getBairro());
+            jTextField4.setText(clientes_tela.getCPF());
+            jTextField5.setText(clientes_tela.getCidade());
+            jTextField6.setText(clientes_tela.getNumero());
+            jTextField7.setText(clientes_tela.getEmail());
+            jTextField8.setText(clientes_tela.getCep());
+            jTextField9.setText(clientes_tela.getComplemento());
+            jComboBox1.setSelectedItem(clientes_tela.getUF());
+            
+            jLabel1.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jLabel2.setVisible(true);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+            jLabel7.setVisible(true);
+            jLabel8.setVisible(true);
+            jLabel9.setVisible(true);
+            jLabel10.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField4.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField6.setVisible(true);
+            jTextField9.setVisible(true);
+            jTextField3.setVisible(true);
+            jTextField5.setVisible(true);
+            jTextField8.setVisible(true);
+            jTextField7.setVisible(true);
+            jComboBox1.setVisible(true);
+            jButton1.setText("Consultar");
+        }
+        
         operacao = "Alteração";
         if (operacaoAtivaGlobal.equals(operacao)) {
             
@@ -309,8 +372,7 @@ public class Cad_Cliente extends javax.swing.JFrame {
             clientes_tela.setEmail(jTextField7.getText());
             clientes_tela.setUF(jComboBox1.getSelectedItem().toString());
             
-            objcon.alteraRegistroJFBD("CLIENTES", clientes_tela.alteraDadosSQLValues(),
-                    "ID_CLI='"+jTextField10.getText()+"'");
+            objcon.alteraRegistroJFBD("CLIENTES", clientes_tela.alteraDadosSQLValues(),"ID_CLI='"+jTextField10.getText()+"'");
             
             jTextField1.setText("");
             jTextField2.setText("");
@@ -323,7 +385,9 @@ public class Cad_Cliente extends javax.swing.JFrame {
             jTextField9.setText("");
             jTextField10.setText("");
             jComboBox1.setSelectedItem("AC");
+            this.dispose();
         }
+        
         operacao = "Alterar";
         if (operacaoAtivaGlobal.equals(operacao)) {
             
@@ -362,9 +426,79 @@ public class Cad_Cliente extends javax.swing.JFrame {
             jComboBox1.setVisible(true);
             jButton1.setText("Alterar");
             operacaoAtivaGlobal = "Alteração";
-            
         }
        
+        operacao = "Exclusão";
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            
+            ConnectDAO objcon = new ConnectDAO();
+            
+            objcon.alteraRegistroJFBD("CLIENTES", clientes_tela.alteraDadosSQLValues(),"ID_CLI='"+jTextField10.getText()+"'");
+            
+            jTextField1.setText("");
+            jTextField2.setText("");
+            jTextField3.setText("");
+            jTextField4.setText("");
+            jTextField5.setText("");
+            jTextField6.setText("");
+            jTextField7.setText("");
+            jTextField8.setText("");
+            jTextField9.setText("");
+            jTextField10.setText("");
+            jComboBox1.setSelectedItem("AC");
+            this.dispose();
+        }
+        
+        operacao = "Excluir";
+        if (operacaoAtivaGlobal.equals(operacao)) {
+            
+            ConnectDAO objcon = new ConnectDAO();
+            clientes_tela = objcon.pesquisaClienteJFBD("CLIENTES", "ID_CLI='" + jTextField10.getText() + "'");
+            jTextField1.setText(clientes_tela.getNome());
+            jTextField2.setText(clientes_tela.getEndereco());
+            jTextField3.setText(clientes_tela.getBairro());
+            jTextField4.setText(clientes_tela.getCPF());
+            jTextField5.setText(clientes_tela.getCidade());
+            jTextField6.setText(clientes_tela.getNumero());
+            jTextField7.setText(clientes_tela.getEmail());
+            jTextField8.setText(clientes_tela.getCep());
+            jTextField9.setText(clientes_tela.getComplemento());
+            jComboBox1.setSelectedItem(clientes_tela.getUF());
+            
+            jLabel1.setVisible(true);
+            jLabel3.setVisible(true);
+            jLabel4.setVisible(true);
+            jLabel2.setVisible(true);
+            jLabel5.setVisible(true);
+            jLabel6.setVisible(true);
+            jLabel7.setVisible(true);
+            jLabel8.setVisible(true);
+            jLabel9.setVisible(true);
+            jLabel10.setVisible(true);
+            jTextField1.setVisible(true);
+            jTextField4.setVisible(true);
+            jTextField2.setVisible(true);
+            jTextField6.setVisible(true);
+            jTextField9.setVisible(true);
+            jTextField3.setVisible(true);
+            jTextField5.setVisible(true);
+            jTextField8.setVisible(true);
+            jTextField7.setVisible(true);
+            jComboBox1.setVisible(true);
+            // Agora cancela a opção do usuário editar os campos, deixando somentes para leitura
+            jTextField1.setEditable(false);
+            jTextField4.setEditable(false);
+            jTextField2.setEditable(false);
+            jTextField6.setEditable(false);
+            jTextField9.setEditable(false);
+            jTextField3.setEditable(false);
+            jTextField5.setEditable(false);
+            jTextField8.setEditable(false);
+            jTextField7.setEditable(false);
+            jComboBox1.setEditable(false);
+            jButton1.setText("Excluir");
+            operacaoAtivaGlobal = "Exclusão";
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

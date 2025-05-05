@@ -1,0 +1,38 @@
+//API REST de municipios
+@baseURL = http://localhost:3000/api/municipios
+
+@id = 67eb1cc9a90387ca5d6deb02
+
+###
+//GET - Lista de municipios
+GET {{baseURL}}?page=
+Content-Type: application/json
+
+###
+//GET - By id
+GET {{baseURL}}/{{id}}
+Content-Type: application/json
+
+
+###
+GET {{baseURL}}/3
+Content-type: application/json
+
+###
+//POST - Insere um novo municipio
+POST {{baseURL}}
+Content-Type: application/json
+
+{"codigo_ibge": 5200067,
+  "nome": "Abadia de Votorantim",
+  "capital": false,
+  "codigo_uf": 52,
+  "local": {
+    "type": "Point",
+    "coordinates": [
+      -49.4412,
+      -16.7573
+    ]
+  }
+}
+
