@@ -1,5 +1,6 @@
 import {check, param, validationResult} from 'express-validator'
 import { ObjectId } from 'mongodb'
+//const db = req
 
 //middleware para verificar os resultados da validação
 export const validateRequest = (req, res, next) => {
@@ -48,26 +49,27 @@ export const validateMunicipio = [
 export const validateUsuario = [
     check('nome')
         .not().isEmpty().trim().withMessage('É obrigatório informar o nome')
-        .isAlpha('pt-BR',{ignore: ''}).withMessage('Informe apenas Texto')
+        .isAlpha('pt-BR',{ignore: ' '}).withMessage('Informe apenas Texto')
         .isLength({min:3}).withMessage('Informe no minimo 3 caracteres')
         .isLength({max:100}).withMessage('Informe no maximo 100 Caracteres'),
     check('email')
         .not().isEmpty().trim().withMessage('É obrigatório informar email')
         .isEmail().withMessage('Informe um email válido')
         .isLowercase().withMessage('Não são permitias maiúsculas')
-        .custom((value, { req })=> {
+        /*.custom((value, {  })=> {
             return db.collection('usuarios')
                 .find({email: {$eq: value}}).toArray()
                 .then((email) => {
                 //verifica se não existe o ID para garantir que é inclusão
-            if(email.length && !req.params.id){
+            if(email.length){
                 return Promise.reject(`o email ${value} já existe!`)
             }
             })
-        }),
+        })*/,
         check('senha')
             .not().isEmpty().trim().withMessage('A senha é obrigatória')
-            .isLength({min:6}).withMessage('A senha deve ter no mínimo 6 caracteres')
+            .isLength({min:6})
+            .withMessage('A senha deve ter no mínimo 6 caracteres')
             .isStrongPassword({
                 minlength: 6,
                 minLowercase: 1, minUppercase: 1,
@@ -78,7 +80,7 @@ export const validateUsuario = [
                 .default(true)
                 .isBoolean().withMessage('O valor deve ser um booleano'),
             check('tipo')
-                .default('liente')
+                .default('Cliente')
                 .isIn(['Cliente','Admin']).withMessage('O tipo deve ser Admin ou Cliente'),
             check('Avatar')
                 .optional({nullable: true})

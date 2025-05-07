@@ -1,0 +1,14 @@
+//API REST de usuarios
+// Teste da API REST de usuários
+@baseURL = http://localhost:3000/api/usuarios
+###
+# @prompt senha
+
+POST {{baseURL}}
+Content-Type: application/json
+
+{
+    "nome": "Albert Einstein",
+    "email": "einstein@fatec.gov.br",
+    "senha": "{{senha}}"
+}
