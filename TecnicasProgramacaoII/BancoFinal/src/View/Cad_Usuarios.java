@@ -5,7 +5,7 @@
 package View;
 
 import DAO.ConnectDAO;
-import bancofinal.Usuarios;
+import bancofinal.Usuario;
 import java.util.Arrays;
 
 /**
@@ -39,7 +39,7 @@ public class Cad_Usuarios extends javax.swing.JFrame {
        
     }
     
-    Usuarios tela_usu = new Usuarios();
+    Usuario tela_usu = new Usuario();
     boolean senhaVisivel = false;
 
     /**

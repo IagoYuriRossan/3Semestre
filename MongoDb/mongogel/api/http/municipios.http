@@ -3,10 +3,13 @@
 
 @id = 67eb1cc9a90387ca5d6deb02
 
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjgyMjgzNzQyOGM2ODIwYzc1NTBiMTYwIn0sImlhdCI6MTc0NzA5ODI3NCwiZXhwIjoxNzQ3MTg0Njc0fQ.CzstWyWHY8g9xW3P2vNHwc4QJeR19KyqSsRuqklCRHY
+
 ###
 //GET - Lista de municipios
 GET {{baseURL}}?page=
 Content-Type: application/json
+access-token: {{token}}
 
 ###
 //GET - By id

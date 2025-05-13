@@ -8,7 +8,17 @@ POST {{baseURL}}
 Content-Type: application/json
 
 {
-    "nome": "Albert Einstein",
-    "email": "einstein@fatec.gov.br",
+    "nome": "Iago Rossan",
+    "email": "iagorossan@fatec.gov.br",
+    "senha": "{{senha}}"
+}
+
+###
+# @prompt senha
+POST {{baseURL}}/login
+Content-Type: application/json
+
+{
+    "email": "iagorossan@fatec.gov.br",
     "senha": "{{senha}}"
 }

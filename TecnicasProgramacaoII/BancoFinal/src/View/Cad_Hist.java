@@ -5,7 +5,7 @@
 package View;
 
 import DAO.ConnectDAO;
-import bancofinal.Historicos;
+import bancofinal.Historico;
 
 /**
  *
@@ -34,7 +34,7 @@ public class Cad_Hist extends javax.swing.JFrame {
        
     }
     
-    Historicos tela_his = new Historicos();
+    Historico tela_his = new Historico();
 
     /**
      * This method is called from within the constructor to initialize the form.

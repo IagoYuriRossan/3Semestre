@@ -4,8 +4,8 @@ package DAO;
 import java.util.List;
 import java.util.ArrayList;
 */
-import bancofinal.Agencias;
-import bancofinal.Clientes;
+import bancofinal.Agencia;
+import bancofinal.Cliente;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -121,8 +121,8 @@ public class ConnectDAO {
         }        
     }
     
-    public Clientes pesquisaClienteJFBD(String tabela, String pesquisaId) {
-        Clientes clientesReturn = new Clientes();
+    public Cliente pesquisaClienteJFBD(String tabela, String pesquisaId) {
+        Cliente clientesReturn = new Cliente();
         String tabelaSGBD = "CLIENTES";
         if (tabela.equals(tabelaSGBD)) {
             con = ConnectDB();
@@ -174,8 +174,8 @@ public class ConnectDAO {
         
     }  
 
-    public Agencias pesquisaAgenciaJFBD(String tabela, String pesquisaId) {
-        Agencias agenciasReturn = new Agencias();
+    public Agencia pesquisaAgenciaJFBD(String tabela, String pesquisaId) {
+        Agencia agenciasReturn = new Agencia();
         String tabelaSGBD = "AGENCIAS";
         if (tabela.equals(tabelaSGBD)) {
             con = ConnectDB();
@@ -227,9 +227,9 @@ public class ConnectDAO {
         
     }
     
-    public List<Clientes> consultaRegistroClienteBD(){
+    public List<Cliente> consultaRegistroClienteBD(){
         con = ConnectDB();
-        List<Clientes> clientes = new ArrayList<>();
+        List<Cliente> clientes = new ArrayList<>();
         
         Statement stmt;
         
@@ -248,7 +248,7 @@ public class ConnectDAO {
                     {
                     i++;
 
-                    Clientes cliente = new Clientes(
+                    Cliente cliente = new Cliente(
                         "NOME_CLI",
                         "CPF_CLI",
                         "ENDE_CLI",
@@ -261,7 +261,7 @@ public class ConnectDAO {
                         "EMAIL_CLI");
                         clientes.add(cliente);
                     }
-                    Clientes cliente = new Clientes(
+                    Cliente cliente = new Cliente(
                         dados.getString("NOME_CLI"),
                         dados.getString("CPF_CLI"),
                         dados.getString("ENDE_CLI"),

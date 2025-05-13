@@ -1,9 +1,12 @@
-import 'dotenv/config'
 import express from 'express'
 import cors from 'cors'//importa o módulo cors
 import {connectToDatabase} from './config/db.js'
 import municipiosRoutes from './routes/municipios.js'
 import usuariosRoutes from './routes/usuarios.js'
+import { config } from 'dotenv'
+import 'dotenv/config'
+
+config()//carrega o conteudo do .env
 
 const app = express()
 app.use(cors())//Habilita o CORS Cross-Origin resource Sharing

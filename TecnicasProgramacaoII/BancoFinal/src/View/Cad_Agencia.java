@@ -5,7 +5,7 @@
 package View;
 
 import DAO.ConnectDAO;
-import bancofinal.Agencias;
+import bancofinal.Agencia;
 
 /**
  *
@@ -106,7 +106,7 @@ public class Cad_Agencia extends javax.swing.JFrame {
        
     }
     
-    Agencias agencia_tela = new Agencias();
+    Agencia agencia_tela = new Agencia();
 
     /**
      * This method is called from within the constructor to initialize the form.

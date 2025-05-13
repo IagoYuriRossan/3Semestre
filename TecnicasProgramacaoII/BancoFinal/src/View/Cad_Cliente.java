@@ -1,7 +1,7 @@
 package View;
 
 import DAO.ConnectDAO;
-import bancofinal.Clientes;
+import bancofinal.Cliente;
 
 public class Cad_Cliente extends javax.swing.JFrame {
 
@@ -92,7 +92,7 @@ public class Cad_Cliente extends javax.swing.JFrame {
        
     }
     
-    Clientes clientes_tela = new Clientes();
+    Cliente clientes_tela = new Cliente();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
