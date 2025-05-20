@@ -8,8 +8,8 @@ POST {{baseURL}}
 Content-Type: application/json
 
 {
-    "nome": "Iago Rossan",
-    "email": "iagorossan@fatec.gov.br",
+    "nome": "aluno da fatec",
+    "email": "alunoda@fatec.gov.br",
     "senha": "{{senha}}"
 }
 
@@ -19,6 +19,6 @@ POST {{baseURL}}/login
 Content-Type: application/json
 
 {
-    "email": "iagorossan@fatec.gov.br",
+    "email": "alunoda@fatec.gov.br",
     "senha": "{{senha}}"
 }
