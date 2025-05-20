@@ -342,7 +342,7 @@ public class Cad_Agencia extends javax.swing.JFrame {
         if (operacaoAtivaGlobal.equals(operacao)) {
             
             ConnectDAO objcon = new ConnectDAO();
-            agencia_tela = objcon.pesquisaAgenciaJFBD("AGENCIAS", "NUME_AGE='" + agenciaField.getText() + "'");
+            agencia_tela = objcon.pesquisaAgenciaJFBD("AGENCIAS", "ID_AGE='" + agenciaField.getText() + "'");
             agenciaField.setText(agencia_tela.getNum_agencia());
             jTextField2.setText(agencia_tela.getNome());
             jTextField3.setText(agencia_tela.getEndereco());
