@@ -3,10 +3,10 @@ package bancofinal;
 import javax.swing.JOptionPane;
  
 public class Agencia {
-    private String Num_agencia;
     private String Nome;
     private String Endereco;
     private String Numero;
+    private String Num_agencia;
     private String Complemento;
     private String Bairro;
     private String Cidade;
@@ -15,6 +15,23 @@ public class Agencia {
     private String CNPJ;
     private String Gerente;
  
+    public Agencia(String Nome, String Endereco, String Numero,
+            String Num_agencia, String Complemento, String Bairro, String Cidade,
+            String UF, String CEP, String CNPJ, String Gerente) {
+        this.Nome = Nome;
+        this.Endereco = Endereco;
+        this.Numero = Numero;
+        this.Num_agencia = Num_agencia;
+        this.Complemento = Complemento;
+        this.Bairro = Bairro;
+        this.Cidade = Cidade;
+        this.UF = UF;
+        this.CEP = CEP;
+        this.CNPJ = CNPJ;
+        this.Gerente = Gerente;
+    }
+    
+    public Agencia() {}
     
     public String getNum_agencia() { return Num_agencia; }
     public void setNum_agencia(String Num_agencia) {
@@ -175,6 +192,7 @@ public class Agencia {
                 + this.getNome() + "','"
                 + this.getEndereco()+ "','"
                 + this.getNumero()+ "','"
+                + this.getNum_agencia() + "','"
                 + this.getComplemento()+ "','"
                 + this.getBairro()+ "','"
                 + this.getCidade()+ "','"
@@ -186,17 +204,18 @@ public class Agencia {
     }
     public String alteraDadosSQLValues() {
         String dadosAgencias;
-        dadosAgencias = "NOME_AGE='"
-                + this.getNome() + "',ENDE_AGE='"
-                + this.getEndereco()+ "',NUME_AGE='"
-                + this.getNumero()+ "',COMPL_AGE='"
-                + this.getComplemento()+ "',BAIR_AGE='"
-                + this.getBairro()+ "',CIDA_AGE='"
-                + this.getCidade()+ "',UF_AGE='"
-                + this.getUF()+ "',CEP_AGE='"
-                + this.getCEP()+ "',CNPJ_AGE='"
-                + this.getCNPJ()+ "',GER_AGE='"
-                + this.getGerente()+ "'";
+        dadosAgencias =
+                "NOME_AGE='" + this.getNome() +
+                "',ENDE_AGE='" + this.getEndereco()+
+                "',NUMERO='" + this.getNumero()+
+                "',NUME_AGE='" + this.getNum_agencia()+
+                "',COMPL_AGE='" + this.getComplemento()+
+                "',BAIR_AGE='" + this.getBairro()+
+                "',CIDA_AGE='" + this.getCidade()+
+                "',UF_AGE='" + this.getUF()+
+                "',CEP_AGE='" + this.getCEP()+
+                "',CNPJ_AGE='" + this.getCNPJ()+
+                "',GER_AGE='" + this.getGerente()+ "'";
         return dadosAgencias;
     }
 }

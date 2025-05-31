@@ -169,65 +169,11 @@ public class ConnectDAO {
                 Logger.getLogger(ConnectDAO.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
         return clientesReturn;
-        
     }  
-
-    public Agencia pesquisaAgenciaJFBD(String tabela, String pesquisaId) {
-        Agencia agenciasReturn = new Agencia();
-        String tabelaSGBD = "AGENCIAS";
-        if (tabela.equals(tabelaSGBD)) {
-            con = ConnectDB();
-            
-            Statement stmt;
-            try {
-                stmt = con.createStatement();
-                
-                String sql = "SELECT * FROM " + tabela + " WHERE " + pesquisaId;
-                
-                try {
-                    ResultSet dados;
-                    dados = stmt.executeQuery(sql);
-                    if(dados.next() == false) {
-                        
-                        JOptionPane.showMessageDialog(null, "Nenhum registro foi encontrado para essa pesquisa.");
-                        
-                    } else {
-                        agenciasReturn.setNome(dados.getString(2));
-                        agenciasReturn.setEndereco(dados.getString(3));
-                        agenciasReturn.setNumero(dados.getString(4));
-                        agenciasReturn.setComplemento(dados.getString(5));
-                        agenciasReturn.setBairro(dados.getString(6));
-                        agenciasReturn.setCidade(dados.getString(7));
-                        agenciasReturn.setUF(dados.getString(8));
-                        agenciasReturn.setCEP(dados.getString(9));
-                        agenciasReturn.setCNPJ(dados.getString(10));
-                        agenciasReturn.setGerente(dados.getString(11));
-                    }
-                    
-                    con.close();
-                    
-                    return agenciasReturn;
-                    
-                } catch (SQLException erro) {
-                    JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
-                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
-                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
-                }
-                
-                con.close();
-                
-            } catch (SQLException ex) {
-                Logger.getLogger(ConnectDAO.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-        
-        return agenciasReturn;
-        
-    }
     
-    public List<Cliente> consultaRegistroClienteBD(){
+    
+        public List<Cliente> consultaRegistroClienteBD(){
         con = ConnectDB();
         List<Cliente> clientes = new ArrayList<>();
         
@@ -290,6 +236,131 @@ public class ConnectDAO {
         }
         return null;  
     }
+    
+    
+    
+
+    public Agencia pesquisaAgenciaJFBD(String tabela, String pesquisaId) {
+        Agencia agenciasReturn = new Agencia();
+        String tabelaSGBD = "AGENCIAS";
+        if (tabela.equals(tabelaSGBD)) {
+            con = ConnectDB();
+            
+            Statement stmt;
+            try {
+                stmt = con.createStatement();
+                
+                String sql = "SELECT * FROM " + tabela + " WHERE " + pesquisaId;
+                
+                try {
+                    ResultSet dados;
+                    dados = stmt.executeQuery(sql);
+                    if(dados.next() == false) {
+                        
+                        JOptionPane.showMessageDialog(null, "Nenhum registro foi encontrado para essa pesquisa.");
+                        
+                    } else {
+                        agenciasReturn.setNome(dados.getString(2));
+                        agenciasReturn.setEndereco(dados.getString(3));
+                        agenciasReturn.setNumero(dados.getString(4));
+                        agenciasReturn.setNum_agencia(dados.getString(5));
+                        agenciasReturn.setComplemento(dados.getString(6));
+                        agenciasReturn.setBairro(dados.getString(7));
+                        agenciasReturn.setCidade(dados.getString(8));
+                        agenciasReturn.setUF(dados.getString(9));
+                        agenciasReturn.setCEP(dados.getString(10));
+                        agenciasReturn.setCNPJ(dados.getString(11));
+                        agenciasReturn.setGerente(dados.getString(12));
+                    }
+                    
+                    con.close();
+                    
+                    return agenciasReturn;
+                    
+                } catch (SQLException erro) {
+                    JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                    JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());
+                }
+                
+                con.close();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(ConnectDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return agenciasReturn;
+        
+    }
+    
+    public List<Agencia> consultaRegistroAgenciaBD(){
+        con = ConnectDB();
+        List<Agencia> agencias = new ArrayList<>();
+        
+        Statement stmt;
+        
+        try {
+            stmt = con.createStatement();
+            // Cria a string com a sentença SQL para excluir registro.
+            String sql = "SELECT * FROM AGENCIAS";
+        
+            try{
+                //Execute a sentença de delete7
+                ResultSet dados = stmt.executeQuery(sql);
+                JOptionPane.showMessageDialog(null, "Select executado com sucesso");
+                int i=0;
+                while (dados.next()){
+                    if (i==0)
+                    {
+                    i++;
+
+                    Agencia agencia = new Agencia(
+                        "NOME_AGE",
+                        "ENDE_AGE",
+                        "NUMERO_AGE",
+                        "NUME_AGE",
+                        "COMPL_AGE",
+                        "BAIR_AGE",
+                        "CIDA_AGE",
+                        "UF_AGE",
+                        "CEP_AGE",
+                        "CNPJ-AGE",
+                        "GER_AGE");
+                        agencias.add(agencia);
+                    }
+                    Agencia agencia = new Agencia(
+                        dados.getString("NOME_AGE"),
+                        dados.getString("ENDE_AGE"),
+                        dados.getString("NUMERO_AGE"),
+                        dados.getString("NUME_AGE"),
+                        dados.getString("COMPL_AGE"),
+                        dados.getString("BAIR_AGE"),
+                        dados.getString("CIDA_AGE"),
+                        dados.getString("UF_AGE"),
+                        dados.getString("CEP_AGE"),
+                        dados.getString("CNPJ_AGE"),
+                        dados.getString("EMAIL_AGE")
+                    );
+                    agencias.add(agencia);
+                }
+            con.close();
+            return agencias; //lista;
+    
+            } catch (SQLException erro) {
+                JOptionPane.showMessageDialog(null, "Erro de conexão, connectDAO - Mensagem => "+erro.getMessage());
+                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Estado => "+erro.getSQLState());
+                JOptionPane.showMessageDialog(null, "\n Erro de conexão, connectDAO - Código => "+erro.getErrorCode());            
+            } 
+            con.close();
+        }
+        catch (SQLException ex) {
+            Logger.getLogger(ConnectDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;  
+    }
+    
+
 }
 
 

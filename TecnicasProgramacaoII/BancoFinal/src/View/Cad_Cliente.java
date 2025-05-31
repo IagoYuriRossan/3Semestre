@@ -90,6 +90,31 @@ public class Cad_Cliente extends javax.swing.JFrame {
             jButton1.setText("PesquisaConsulta");
        }
        
+              operacao = "Excluir";
+       if(operacaoAtiva.equals(operacao)) {
+            jLabel1.setVisible(false);
+            jLabel2.setVisible(false);
+            jLabel3.setVisible(false);
+            jLabel4.setVisible(false);
+            jLabel5.setVisible(false);
+            jLabel6.setVisible(false);
+            jLabel7.setVisible(false);
+            jLabel8.setVisible(false);
+            jLabel9.setVisible(false);
+            jLabel10.setVisible(false);
+            jLabel11.setVisible(true);
+            jTextField1.setVisible(false);
+            jTextField2.setVisible(false);
+            jTextField4.setVisible(false);
+            jTextField5.setVisible(false);
+            jTextField6.setVisible(false);
+            jTextField8.setVisible(false);
+            jTextField3.setVisible(false);
+            jTextField10.setVisible(true);
+            jComboBox1.setVisible(false);
+            jButton1.setText("Pesquisar");
+       }
+       
     }
     
     Cliente clientes_tela = new Cliente();
@@ -164,6 +189,12 @@ public class Cad_Cliente extends javax.swing.JFrame {
         jLabel8.setText("Email");
 
         jLabel9.setText("Número");
+
+        jTextField7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField7ActionPerformed(evt);
+            }
+        });
 
         jLabel10.setText("Complemento");
 
@@ -433,7 +464,7 @@ public class Cad_Cliente extends javax.swing.JFrame {
             
             ConnectDAO objcon = new ConnectDAO();
             
-            objcon.alteraRegistroJFBD("CLIENTES", clientes_tela.alteraDadosSQLValues(),"ID_CLI='"+jTextField10.getText()+"'");
+            objcon.excluiRegistroJFBD("CLIENTES","ID_CLI='"+jTextField10.getText()+"'");
             
             jTextField1.setText("");
             jTextField2.setText("");
@@ -532,6 +563,10 @@ public class Cad_Cliente extends javax.swing.JFrame {
     private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField10ActionPerformed
+
+    private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField7ActionPerformed
 
     /**
      * @param args the command line arguments
