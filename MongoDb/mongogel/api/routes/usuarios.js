@@ -1,12 +1,11 @@
 import express from 'express'
-import { efetuaLogin, insereUsuario } from '../controllers/usuarios.js'
-import { validateUsuario } from '../middleware/validations.js'
+import {insereUsuario, efetuaLogin} from '../controllers/usuarios.js'
+import {validateUsuario, checkEmailDuplicado} from '../middleware/validation.js'
 
 const router = express.Router()
 //Cria novo usuário
-router.post('/', validateUsuario, insereUsuario)
-
-//valida o login
+router.post('/', validateUsuario, checkEmailDuplicado, insereUsuario)
+//Valida o login
 router.post('/login', efetuaLogin)
 
 export default router

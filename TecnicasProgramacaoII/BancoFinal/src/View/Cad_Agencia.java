@@ -415,7 +415,7 @@ public class Cad_Agencia extends javax.swing.JFrame {
             this.dispose();
         }
         
-                operacao = "Alterar";
+        operacao = "Alterar";
         if (operacaoAtivaGlobal.equals(operacao)) {
             
             ConnectDAO objcon = new ConnectDAO();

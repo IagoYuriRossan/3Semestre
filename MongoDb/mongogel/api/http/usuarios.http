@@ -1,15 +1,14 @@
-//API REST de usuarios
-// Teste da API REST de usuários
+// Instale a extensão REST Client para efetuar os testes
+// Teste da API REST de Usuários
 @baseURL = http://localhost:3000/api/usuarios
 ###
 # @prompt senha
-
 POST {{baseURL}}
 Content-Type: application/json
 
 {
-    "nome": "aluno da fatec",
-    "email": "alunoda@fatec.gov.br",
+    "nome": "Iago Rossan",
+    "email": "iaguin.rossan@fatec.gov.br",
     "senha": "{{senha}}"
 }
 
@@ -19,6 +18,6 @@ POST {{baseURL}}/login
 Content-Type: application/json
 
 {
-    "email": "alunoda@fatec.gov.br",
+    "email": "iaguin.rossan@fatec.gov.br",
     "senha": "{{senha}}"
 }

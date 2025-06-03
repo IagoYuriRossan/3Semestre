@@ -1,41 +1,68 @@
-//API REST de municipios
+// Instale a extensão REST Client para efetuar os testes
+// Teste da API REST de Municipios
 @baseURL = http://localhost:3000/api/municipios
-
-@id = 67eb1cc9a90387ca5d6deb02
-
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjgyMjgzNzQyOGM2ODIwYzc1NTBiMTYwIn0sImlhdCI6MTc0NzA5ODI3NCwiZXhwIjoxNzQ3MTg0Njc0fQ.CzstWyWHY8g9xW3P2vNHwc4QJeR19KyqSsRuqklCRHY
+@id = 67dd9f52e9bced2ce766ba27
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c3VhcmlvIjp7ImlkIjoiNjgyMjdmZDg3MmJkMjZhMGI5MDljYjlhIn0sImlhdCI6MTc0NzA5MTgwNiwiZXhwIjoxNzQ3MTc4MjA2fQ.P7zL2GfpGbHrt7k9_0Mscdz_yPVYFXrwxlevu46ZVZw
 
 ###
-//GET - Lista de municipios
-GET {{baseURL}}?page=
+// GET - Lista todos os municipios
+GET {{baseURL}}?page=1&limit=10&sort=_id&order=asc&nome=soro
 Content-Type: application/json
 access-token: {{token}}
-
 ###
-//GET - By id
+// GET - Lista o municipio pelo ID
 GET {{baseURL}}/{{id}}
 Content-Type: application/json
 
 
 ###
-GET {{baseURL}}/3
-Content-type: application/json
+// GET - Lista o municipio pela distancia 
+GET {{baseURL}}/nearby?latitude=-16.7573&longitude=-45.4412&distance=10
+Content-Type: application/json
+
 
 ###
-//POST - Insere um novo municipio
+// DELETE - Remove o municipio pelo id
+DELETE {{baseURL}}/{{id}}
+Content-Type: application/json
+
+
+###
+// POST - Insere um novo municipio
 POST {{baseURL}}
 Content-Type: application/json
 
-{"codigo_ibge": 5200067,
+{
+  "codigo_ibge": 5200059,
   "nome": "Abadia de Votorantim",
   "capital": false,
   "codigo_uf": 52,
   "local": {
     "type": "Point",
     "coordinates": [
-      -49.4412,
+      -45.4412,
       -16.7573
     ]
   }
 }
 
+
+###
+// PUT - Altera um municipio já existente
+
+PUT {{baseURL}}/{{id}}
+Content-Type: application/json
+
+{
+  "codigo_ibge": 5200059,
+  "nome": "Abadia de Votorantim Sorocabana",
+  "capital": false,
+  "codigo_uf": 52,
+  "local": {
+    "type": "Point",
+    "coordinates": [
+      -45.4412,
+      -16.7573
+    ]
+  }
+}
