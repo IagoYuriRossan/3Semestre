@@ -4,9 +4,12 @@ import productRoutes from "./src/routes/product.routes";
 import clientRoutes from "./src/routes/client.routes";
 import brandRoutes from "./src/routes/brand.routes";
 import { authRouter } from "./src/routes/auth.routes"
-
+import { setupSwagger } from "./src/swagger/swagger"
 // Criação da aplicação
 const app = express();
+
+setupSwagger(app);
+
 
 // Configura aplicação para receber json no body das requisições
 app.use(express.json());

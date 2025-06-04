@@ -6,6 +6,29 @@ dotenv.config();
 
 export const authRouter = express.Router();
 
+ /**
+ * @swagger
+ * /auth:
+ *   post:
+ *     summary: Autenticação
+ *     tags: [Authentication]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *                 example: admin
+ *               password:
+ *                 type: string
+ *                 example: admin
+ *     responses:
+ *       200:
+ *         description: Autenticado com sucesso */
+
 authRouter.post("/", (req: Request, res: Response) => {
     const { username, password } = req.body;
 
