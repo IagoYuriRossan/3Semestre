@@ -90,7 +90,7 @@ public class Cad_Cliente extends javax.swing.JFrame {
             jButton1.setText("PesquisaConsulta");
        }
        
-              operacao = "Excluir";
+            operacao = "Excluir";
        if(operacaoAtiva.equals(operacao)) {
             jLabel1.setVisible(false);
             jLabel2.setVisible(false);

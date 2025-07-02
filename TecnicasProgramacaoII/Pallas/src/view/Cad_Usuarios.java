@@ -2,11 +2,11 @@ package view;
 
 import DAO.ConnectDAO;
 import classes.Usuario;
-import java.util.Arrays;
+import java.util.List;
 
 public class Cad_Usuarios extends javax.swing.JFrame {
 
-    String operacaoAtivaGlobal = "Nenhum";
+    String operacaoAtivaGlobal = "nenhum";
     
     public Cad_Usuarios() {
         initComponents();
@@ -15,23 +15,49 @@ public class Cad_Usuarios extends javax.swing.JFrame {
     public Cad_Usuarios(String operacaoAtiva) {
        initComponents();
        operacaoAtivaGlobal = operacaoAtiva;
-       String operacao = "Incluir";
        
-       if(operacaoAtiva.equals(operacao)) {
-            nomeLabel.setVisible(true);
-            senhaLabel.setVisible(true);
-            senha2Label.setVisible(true);
-            emailLabel.setVisible(true);
-            nomeField.setVisible(true);
-            senhaField.setVisible(true);
-            senha2Field.setVisible(true);
-            emailField.setVisible(true);
-            cadastrarButton.setText("Incluir BD");
+       if(operacaoAtiva.equals("Incluir")) {
+            this.setAllVisible(true);
+            idField.setVisible(false);
+            idLabel.setVisible(false);
        }
+       
+       if (operacaoAtiva.equals("Alterar") || operacaoAtiva.equals("Excluir") ) {
+           this.setAllVisible(false);
+           idField.setVisible(true);
+           idLabel.setVisible(true);
+           
+           cadastrarButton.setVisible(true);
+           cadastrarButton.setText("Pesquisar");
+           
+       }
+       
+       
        
     }
     
-    Usuario tela_usu = new Usuario();
+    private void setAllVisible(Boolean visible){
+        usernameLabel.setVisible(visible);
+        nomeLabel.setVisible(visible);
+        senhaLabel.setVisible(visible);
+        emailLabel.setVisible(visible);
+        nomeField.setVisible(visible);
+        usernameField.setVisible(visible);
+        senhaField.setVisible(visible);
+        emailField.setVisible(visible);
+    }
+    
+    private void setAllEnabled(Boolean enabled){
+        usernameLabel.setEnabled(enabled);
+        nomeLabel.setEnabled(enabled);
+        senhaLabel.setEnabled(enabled);
+        emailLabel.setEnabled(enabled);
+        nomeField.setEnabled(enabled);
+        usernameField.setEnabled(enabled);
+        senhaField.setEnabled(enabled);
+        emailField.setEnabled(enabled);
+    }
+    Usuario usuarios_tela = new Usuario();
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -39,30 +65,21 @@ public class Cad_Usuarios extends javax.swing.JFrame {
 
         nomeLabel = new javax.swing.JLabel();
         senhaLabel = new javax.swing.JLabel();
-        senha2Label = new javax.swing.JLabel();
         emailField = new javax.swing.JTextField();
-        limparTelaButton = new javax.swing.JButton();
         cadastrarButton = new javax.swing.JButton();
         senhaField = new javax.swing.JPasswordField();
-        LerButton = new javax.swing.JButton();
         emailLabel = new javax.swing.JLabel();
+        usernameField = new javax.swing.JTextField();
+        usernameLabel = new javax.swing.JLabel();
         nomeField = new javax.swing.JTextField();
-        senha2Field = new javax.swing.JPasswordField();
+        idLabel = new javax.swing.JLabel();
+        idField = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         nomeLabel.setText("Nome:");
 
         senhaLabel.setText("Senha:");
-
-        senha2Label.setText("Confirme sua senha:");
-
-        limparTelaButton.setText("Limpar tela");
-        limparTelaButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                limparTelaButtonActionPerformed(evt);
-            }
-        });
 
         cadastrarButton.setText("Cadastrar");
         cadastrarButton.addActionListener(new java.awt.event.ActionListener() {
@@ -71,108 +88,164 @@ public class Cad_Usuarios extends javax.swing.JFrame {
             }
         });
 
-        LerButton.setText("Ler");
-        LerButton.addActionListener(new java.awt.event.ActionListener() {
+        emailLabel.setText("E-mail:");
+
+        usernameLabel.setText("Username:");
+
+        nomeField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LerButtonActionPerformed(evt);
+                nomeFieldActionPerformed(evt);
             }
         });
 
-        emailLabel.setText("E-mail:");
+        idLabel.setText("ID:");
+
+        idField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(emailLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(emailField))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(idLabel)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGap(19, 19, 19)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(emailLabel)
+                                        .addComponent(nomeLabel)
+                                        .addComponent(senhaLabel)))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addContainerGap()
+                                    .addComponent(usernameLabel))))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(nomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 237, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, 235, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(senhaField, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(nomeLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(nomeField))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(senha2Label)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(senha2Field, javax.swing.GroupLayout.DEFAULT_SIZE, 370, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(senhaLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(senhaField))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(limparTelaButton)
-                        .addGap(118, 118, 118)
-                        .addComponent(LerButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(155, 155, 155)
                         .addComponent(cadastrarButton)))
-                .addContainerGap())
+                .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(23, 23, 23)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nomeLabel)
-                    .addComponent(nomeField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(idLabel)
+                    .addComponent(idField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailLabel)
-                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(usernameLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(senhaLabel)
-                    .addComponent(senhaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(nomeField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nomeLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(senha2Label)
-                    .addComponent(senha2Field, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(emailField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailLabel))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(limparTelaButton, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(LerButton, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE)
-                    .addComponent(cadastrarButton, javax.swing.GroupLayout.DEFAULT_SIZE, 35, Short.MAX_VALUE))
+                    .addComponent(senhaField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(senhaLabel))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 51, Short.MAX_VALUE)
+                .addComponent(cadastrarButton)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void limparTelaButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_limparTelaButtonActionPerformed
-        // Limpar:
-        emailField.setText("");
-        nomeField.setText("");
-        senhaField.setText("");
-        senha2Field.setText("");
-    }//GEN-LAST:event_limparTelaButtonActionPerformed
-
     private void cadastrarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cadastrarButtonActionPerformed
         // Cadastrar:
         // INSERT NO DB:
-        String operacao = "Incluir";
-        if (operacaoAtivaGlobal.equals(operacao)) {
-            tela_usu.setNome(nomeField.getText());
-            tela_usu.setSenha(senhaField.getText());
-            tela_usu.setEmail(emailField.getText());
+        if (operacaoAtivaGlobal.equals("Incluir")) {
+            usuarios_tela.setNome(nomeField.getText());
+            usuarios_tela.setSenha(new String(senhaField.getPassword()));
+            usuarios_tela.setEmail(emailField.getText());
+            usuarios_tela.setUsername(usernameField.getText());
 
             
             ConnectDAO objcon = new ConnectDAO();
-            objcon.insereRegistroJFBD("usuario", tela_usu.dadosSQLValues());
+            objcon.insereRegistroJFBD("Usuarios", usuarios_tela.dadosSQLValues());
             
             nomeField.setText("");
+            usernameField.setText("");
             senhaField.setText("");
             emailField.setText("");
-            senha2Field.setText("");
         }
+        
+        
+        if (operacaoAtivaGlobal.equals("Alteração")) {
+            usuarios_tela.setNome(nomeField.getText());
+            usuarios_tela.setSenha(new String(senhaField.getPassword()));
+            usuarios_tela.setEmail(emailField.getText());
+            usuarios_tela.setUsername(usernameField.getText());
+
+            
+            ConnectDAO objcon = new ConnectDAO();
+            objcon.alteraRegistroJFBD("Usuarios",this.usuarios_tela.alteraDadosSQLValues(), this.usuarios_tela.termoSQLWhereByID());
+            
+            nomeField.setText("");
+            usernameField.setText("");
+            senhaField.setText("");
+            emailField.setText("");
+            
+        }
+        
+        if (operacaoAtivaGlobal.equals("Exclusão")) {
+            
+            ConnectDAO objcon = new ConnectDAO();
+            objcon.excluiRegistroJFBD("Usuarios", this.usuarios_tela.termoSQLWhereByID());
+        }
+        
+        if (operacaoAtivaGlobal.equals("Alterar") || operacaoAtivaGlobal.equals("Excluir") ) {
+            this.usuarios_tela.setId(this.idField.getText());
+            
+            ConnectDAO objcon = new ConnectDAO();
+            List<String> dadosSQL = objcon.consultaRegistroJFBD("Usuarios", this.usuarios_tela.consultaSQLValues(), this.usuarios_tela.termoSQLWhereByID());
+            
+            this.usuarios_tela.importaSQLValues(dadosSQL);
+            
+            nomeField.setText(this.usuarios_tela.getNome());
+            usernameField.setText(this.usuarios_tela.getUsername());
+            emailField.setText(this.usuarios_tela.getEmail());
+            senhaField.setText(this.usuarios_tela.getSenha());
+            
+            this.setAllVisible(true);
+            if (operacaoAtivaGlobal.equals("Excluir") ){
+                operacaoAtivaGlobal = "Exclusão";
+                this.cadastrarButton.setText("Excluir");
+                this.setAllEnabled(false);
+                this.cadastrarButton.setEnabled(true);
+            } else {
+                operacaoAtivaGlobal = "Alteração";
+                this.cadastrarButton.setText("Alterar");
+            } 
+        }
+        
+        
     }//GEN-LAST:event_cadastrarButtonActionPerformed
 
-    private void LerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LerButtonActionPerformed
-        // Ler:
+    private void nomeFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nomeFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nomeFieldActionPerformed
 
-    }//GEN-LAST:event_LerButtonActionPerformed
+    private void idFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idFieldActionPerformed
 
     public static void main(String args[]) {
 
@@ -184,16 +257,16 @@ public class Cad_Usuarios extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton LerButton;
     private javax.swing.JButton cadastrarButton;
     private javax.swing.JTextField emailField;
     private javax.swing.JLabel emailLabel;
-    private javax.swing.JButton limparTelaButton;
+    private javax.swing.JTextField idField;
+    private javax.swing.JLabel idLabel;
     private javax.swing.JTextField nomeField;
     private javax.swing.JLabel nomeLabel;
-    private javax.swing.JPasswordField senha2Field;
-    private javax.swing.JLabel senha2Label;
     private javax.swing.JPasswordField senhaField;
     private javax.swing.JLabel senhaLabel;
+    private javax.swing.JTextField usernameField;
+    private javax.swing.JLabel usernameLabel;
     // End of variables declaration//GEN-END:variables
 }

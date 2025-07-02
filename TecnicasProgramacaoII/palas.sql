@@ -1,13 +1,15 @@
+DROP TABLE Pallas
+
 create database [Pallas]
 
 use [Pallas]
-select * from usuario
-create table usuario(
-ID int identity (1,1) primary key,
-Nome varchar (50),
-Email varchar (65),
-senha varchar (80),
-pontuação int,
-horas datetime,
-foto VARBINARY(MAX));
+select * from usuarios
+
+CREATE TABLE Usuarios (
+    Id INT PRIMARY KEY IDENTITY(1,1), -- Chave primária auto-incrementável
+    Nome VARCHAR(255) NOT NULL,
+    Username VARCHAR(50) NOT NULL UNIQUE, -- Unique para garantir usernames únicos
+    Email VARCHAR(255),
+	Senha VARCHAR(255) NOT NULL,
+);
 

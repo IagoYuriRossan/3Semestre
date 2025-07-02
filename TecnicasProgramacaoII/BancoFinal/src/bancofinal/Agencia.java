@@ -205,7 +205,7 @@ public class Agencia {
     public String alteraDadosSQLValues() {
         String dadosAgencias;
         dadosAgencias =
-                "NOME_AGE='" + this.getNome() +
+                "'NOME_AGE='" + this.getNome() +
                 "',ENDE_AGE='" + this.getEndereco()+
                 "',NUMERO='" + this.getNumero()+
                 "',NUME_AGE='" + this.getNum_agencia()+

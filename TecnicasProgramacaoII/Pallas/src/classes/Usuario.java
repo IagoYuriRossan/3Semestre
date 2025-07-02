@@ -1,20 +1,25 @@
 package classes;
 
-import java.awt.image.BufferedImage;
+import java.security.Timestamp;
 import java.time.LocalDateTime;
+import java.util.List;
 import javax.swing.JOptionPane;
 
 public class Usuario {
-
+    
+    private String Id;
+    private String Username;
     private String Nome;
     private String Senha;
     private String Email;
-    private LocalDateTime dataCriacao;
 
     // Construtor com validações seguras
-    public Usuario(String Nome, String Senha, String Email, BufferedImage Foto) {
+    public Usuario(String id, String Nome, String Senha, String Email, String Username) {
+        this.Id = Id;
         this.Nome = Nome;
         this.Email = Email;
+        this.Senha = Senha;
+        this.Username = Username;
 
         // Validação direta da senha (evita chamada ao setter dentro do construtor)
         if (Senha == null || Senha.trim().isEmpty()) {
@@ -31,11 +36,8 @@ public class Usuario {
         }
 
         this.Senha = Senha;
-
-        // Define a data de criação diretamente
-        this.dataCriacao = LocalDateTime.now();
     }
-
+    
     // Construtor vazio
     public Usuario() {}
 
@@ -50,7 +52,28 @@ public class Usuario {
         }
         this.Nome = Nome;
     }
+    
+    public String getUsername() {
+        return Username;
+    }
 
+    public String getId() {
+        return Id;
+    }
+
+    public void setId(String Id) {
+        this.Id = Id;
+    }
+
+    
+    
+    public void setUsername(String Username) {
+        if (Username == null || Username.isEmpty() || Username.isBlank()) {
+            JOptionPane.showMessageDialog(null, "Username não pode ser nulo, vazio ou em branco!");
+        }
+        this.Username = Username;
+    }
+    
     // Senha com validação
     public String getSenha() {
         return Senha;
@@ -71,11 +94,6 @@ public class Usuario {
         }
 
         this.Senha = Senha;
-
-        // Se a data de criação ainda não foi definida, define agora
-        if (this.dataCriacao == null) {
-            this.dataCriacao = LocalDateTime.now();
-        }
     }
 
     // Email com validação
@@ -96,17 +114,46 @@ public class Usuario {
 
         this.Email = Email;
     }
-
-    // Data de criação
-    public LocalDateTime getDataCriacao() {
-        return dataCriacao;
-    }
-
-    public void setDataCriacao(LocalDateTime dataCriacao) {
-        this.dataCriacao = dataCriacao;
-    }
-
+    
     public String dadosSQLValues() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String dadosUsuarios;
+        dadosUsuarios = "'"
+                + this.getNome() + "','"
+                + this.getUsername()+ "','"
+                + this.getEmail() + "','"
+                + this.getSenha() + "'";
+                
+        JOptionPane.showMessageDialog(null, "Retorno dadosSQLValues: "+dadosUsuarios);
+        return dadosUsuarios;
+    }
+    
+    public String alteraDadosSQLValues() {
+        String dadosUsuarios;
+        dadosUsuarios =
+                "Nome='" + this.getNome() +
+                "',Username='" + this.getUsername()+
+                "',Email='" + this.getEmail()+
+                "',Senha='" + this.getSenha()+"'";
+        return dadosUsuarios;
+    }
+    
+    public String termoSQLWhereByID() {
+        return "Id = "+this.getId();
+    }
+    
+    public String consultaSQLValues() {
+        return "Nome, Username, Email, Senha";
+    }
+    
+    public void importaSQLValues(List<String> dados){
+        System.out.println(dados);
+        System.out.println(dados.size());
+        if (dados.size() != 4){
+            throw new IllegalArgumentException("Numero de dados inválido, esperando 4");
+        }
+        this.setNome(dados.get(0));
+        this.setUsername(dados.get(1));
+        this.setEmail(dados.get(2));
+        this.setSenha(dados.get(3));
     }
 }
